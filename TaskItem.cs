@@ -6,26 +6,24 @@ using System.Threading.Tasks;
 
 namespace TaskManager
 {
-    using static Utils;
     internal class TaskItem
     {
 
-        static private int count = 1;
 
-        public int id { get; private set; }
-        private string title;
-        private string description; // Если ставлю string?  то компилятор жалуется говорит, что на net 7.3 нет null
+        public int Id { get; private set; }
+        private string _title;
+        private string _description; // Если ставлю string?  то компилятор жалуется говорит, что на net 7.3 нет null
         public string Description
         {
             get
             {
-                return description;
+                return _description;
             }
             set
             {
                 if (value != "" || value != null)
                 {
-                    description = value;
+                    _description = value;
                 }
             }
         }
@@ -33,44 +31,70 @@ namespace TaskManager
         {
             get
             {
-                return title;
+                return _title;
             }
             set
             {
-                if (!titleHash.Add(value) || value == "" || value == null)
+                if (value == "" || value == null)
                 {
                     throw new Exception("Wrong title name");
                 }
-                title = value;
+                _title = value;
             }
 
         }
-        static private HashSet<string> titleHash = new HashSet<string>();
-        public Priority priority { get; private set; }
-        public DateTime dueTime { get; private set; }
-        public bool isComlite { get; private set; }
+        public Priority Priority { get; private set; }
+        public DateTime DueTime { get; private set; }
+        private bool _isComplete;
 
+        public bool IsComplete
+        {
+            get
+            {
+                return _isComplete;
+            }
+
+            set 
+            {
+                _isComplete = value;
+            }
+        }
         
 
-        internal TaskItem(string title, string description, Priority priority, DateTime dueTime, bool isComplite = false)
+        internal TaskItem(int id, string title, string description, Priority priority, DateTime dueTime, bool isComplite = false)
         {
-            id = count++;
-            this.title= title;
-            this.description = description;
-            this.priority = priority;
-            this.dueTime = dueTime;
-            this.isComlite = isComplite;
+            this.Id = id;
+            this.Title= title;
+            this.Description = description;
+            this.Priority = priority;
+            this.DueTime = dueTime;
+            this.IsComplete = isComplite;
         }
         
     }
 
     internal class Utils
     {
-        internal enum Priority
+        static private int _count = 0;
+        static private HashSet<string> _titelsSet = new HashSet<string>();
+        
+
+        static internal TaskItem CreateTaskItem(string title, string description, Priority priority, DateTime dueTime)
         {
-            Low,
-            Medium,
-            High
+            if (!(_titelsSet.Add(title)))
+            {
+                throw new Exception("Wrong Item");
+            }
+            return new TaskItem(++_count, title, description, priority, dueTime);
         }
     }
+
+
+    internal enum Priority
+    {
+        Low,
+        Medium,
+        High
+    }
+    
 }

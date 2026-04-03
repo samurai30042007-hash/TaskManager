@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TaskManager
 {
-    using static Utils;
+    
     public partial class Form1 : Form
     {
         BindingList<TaskItem> taskItems;
@@ -39,10 +39,18 @@ namespace TaskManager
             }
             else
             {
-                taskItems.Add( new TaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
+                try
+                {
+                    taskItems.Add(Utils.CreateTaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
+                }
+                catch (Exception ex)
+                { 
+                    MessageBox.Show(ex.Message, "Ошибка ввода");
+                }
 
             }
         }
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -52,6 +60,15 @@ namespace TaskManager
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void taskTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (taskTable.Columns[e.ColumnIndex].HeaderText == "isComplete")
+            {
+                
+            }
         }
     }
     

@@ -38,10 +38,10 @@
             this.dueTimeBox = new System.Windows.Forms.DateTimePicker();
             this.Sender = new System.Windows.Forms.Button();
             this.priorityBox = new System.Windows.Forms.ComboBox();
-            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.taskTable = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
+            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBox
@@ -123,10 +123,6 @@
             this.priorityBox.Size = new System.Drawing.Size(110, 24);
             this.priorityBox.TabIndex = 16;
             // 
-            // taskItemBindingSource
-            // 
-            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
-            // 
             // taskTable
             // 
             this.taskTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -136,6 +132,11 @@
             this.taskTable.RowTemplate.Height = 24;
             this.taskTable.Size = new System.Drawing.Size(725, 288);
             this.taskTable.TabIndex = 17;
+            this.taskTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.taskTable_CellContentClick);
+            // 
+            // taskItemBindingSource
+            // 
+            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
             // 
             // Form1
             // 
@@ -154,8 +155,8 @@
             this.Controls.Add(this.titleBox);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
