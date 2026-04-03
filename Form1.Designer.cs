@@ -40,6 +40,7 @@
             this.priorityBox = new System.Windows.Forms.ComboBox();
             this.taskTable = new System.Windows.Forms.DataGridView();
             this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dealeatChosen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -107,9 +108,9 @@
             // 
             // Sender
             // 
-            this.Sender.Location = new System.Drawing.Point(929, 212);
+            this.Sender.Location = new System.Drawing.Point(1053, 212);
             this.Sender.Name = "Sender";
-            this.Sender.Size = new System.Drawing.Size(92, 34);
+            this.Sender.Size = new System.Drawing.Size(94, 36);
             this.Sender.TabIndex = 15;
             this.Sender.Text = "Оправить";
             this.Sender.UseVisualStyleBackColor = true;
@@ -125,9 +126,12 @@
             // 
             // taskTable
             // 
+            this.taskTable.AllowUserToAddRows = false;
+            this.taskTable.AllowUserToDeleteRows = false;
             this.taskTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.taskTable.Location = new System.Drawing.Point(13, 13);
             this.taskTable.Name = "taskTable";
+            this.taskTable.ReadOnly = true;
             this.taskTable.RowHeadersWidth = 51;
             this.taskTable.RowTemplate.Height = 24;
             this.taskTable.Size = new System.Drawing.Size(725, 288);
@@ -138,11 +142,23 @@
             // 
             this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
             // 
+            // dealeatChosen
+            // 
+            this.dealeatChosen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dealeatChosen.Location = new System.Drawing.Point(844, 212);
+            this.dealeatChosen.Name = "dealeatChosen";
+            this.dealeatChosen.Size = new System.Drawing.Size(94, 36);
+            this.dealeatChosen.TabIndex = 18;
+            this.dealeatChosen.Text = "Удалить сделанное";
+            this.dealeatChosen.UseVisualStyleBackColor = true;
+            this.dealeatChosen.Click += new System.EventHandler(this.dealeatChosen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.dealeatChosen);
             this.Controls.Add(this.taskTable);
             this.Controls.Add(this.priorityBox);
             this.Controls.Add(this.Sender);
@@ -174,6 +190,7 @@
         private System.Windows.Forms.Button Sender;
         private System.Windows.Forms.ComboBox priorityBox;
         private System.Windows.Forms.DataGridView taskTable;
+        private System.Windows.Forms.Button dealeatChosen;
     }
 }
 

@@ -14,6 +14,7 @@ namespace TaskManager
     public partial class Form1 : Form
     {
         BindingList<TaskItem> taskItems;
+        Utils utils = new Utils();
 
         public Form1()
         {
@@ -41,7 +42,7 @@ namespace TaskManager
             {
                 try
                 {
-                    taskItems.Add(Utils.CreateTaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
+                    taskItems.Add(utils.CreateTaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
                 }
                 catch (Exception ex)
                 { 
@@ -65,10 +66,17 @@ namespace TaskManager
         private void taskTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            if (taskTable.Columns[e.ColumnIndex].HeaderText == "isComplete")
+            if (taskTable.Columns[e.ColumnIndex].HeaderText == "IsComplete")
             {
-                
+                taskItems[e.RowIndex].IsComplete = !taskItems[e.RowIndex].IsComplete;
             }
+        }
+
+        private void dealeatChosen_Click(object sender, EventArgs e)
+        {
+            
+            taskItems.Remove();
+
         }
     }
     

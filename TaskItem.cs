@@ -13,20 +13,7 @@ namespace TaskManager
         public int Id { get; private set; }
         private string _title;
         private string _description; // Если ставлю string?  то компилятор жалуется говорит, что на net 7.3 нет null
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                if (value != "" || value != null)
-                {
-                    _description = value;
-                }
-            }
-        }
+
         public string Title
         {
             get
@@ -43,9 +30,26 @@ namespace TaskManager
             }
 
         }
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                if (value != "" || value != null)
+                {
+                    _description = value;
+                }
+            }
+        }
+        
         public Priority Priority { get; private set; }
         public DateTime DueTime { get; private set; }
         private bool _isComplete;
+
+
 
         public bool IsComplete
         {
@@ -73,21 +77,7 @@ namespace TaskManager
         
     }
 
-    internal class Utils
-    {
-        static private int _count = 0;
-        static private HashSet<string> _titelsSet = new HashSet<string>();
-        
-
-        static internal TaskItem CreateTaskItem(string title, string description, Priority priority, DateTime dueTime)
-        {
-            if (!(_titelsSet.Add(title)))
-            {
-                throw new Exception("Wrong Item");
-            }
-            return new TaskItem(++_count, title, description, priority, dueTime);
-        }
-    }
+    
 
 
     internal enum Priority
