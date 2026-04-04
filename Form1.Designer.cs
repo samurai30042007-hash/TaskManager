@@ -39,15 +39,16 @@
             this.Sender = new System.Windows.Forms.Button();
             this.priorityBox = new System.Windows.Forms.ComboBox();
             this.taskTable = new System.Windows.Forms.DataGridView();
-            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dealeatChosen = new System.Windows.Forms.Button();
+            this.DeleteAll = new System.Windows.Forms.Button();
+            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBox
             // 
-            this.titleBox.Location = new System.Drawing.Point(844, 61);
+            this.titleBox.Location = new System.Drawing.Point(788, 61);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(110, 22);
             this.titleBox.TabIndex = 3;
@@ -64,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(841, 31);
+            this.label2.Location = new System.Drawing.Point(785, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 18);
             this.label2.TabIndex = 9;
@@ -83,7 +84,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(850, 106);
+            this.label4.Location = new System.Drawing.Point(794, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 16);
             this.label4.TabIndex = 11;
@@ -103,7 +104,7 @@
             // 
             this.dueTimeBox.Location = new System.Drawing.Point(988, 141);
             this.dueTimeBox.Name = "dueTimeBox";
-            this.dueTimeBox.Size = new System.Drawing.Size(149, 22);
+            this.dueTimeBox.Size = new System.Drawing.Size(167, 22);
             this.dueTimeBox.TabIndex = 14;
             // 
             // Sender
@@ -119,33 +120,26 @@
             // priorityBox
             // 
             this.priorityBox.FormattingEnabled = true;
-            this.priorityBox.Location = new System.Drawing.Point(844, 139);
+            this.priorityBox.Location = new System.Drawing.Point(788, 139);
             this.priorityBox.Name = "priorityBox";
             this.priorityBox.Size = new System.Drawing.Size(110, 24);
             this.priorityBox.TabIndex = 16;
             // 
             // taskTable
             // 
-            this.taskTable.AllowUserToAddRows = false;
-            this.taskTable.AllowUserToDeleteRows = false;
             this.taskTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.taskTable.Location = new System.Drawing.Point(13, 13);
             this.taskTable.Name = "taskTable";
-            this.taskTable.ReadOnly = true;
             this.taskTable.RowHeadersWidth = 51;
             this.taskTable.RowTemplate.Height = 24;
             this.taskTable.Size = new System.Drawing.Size(725, 288);
             this.taskTable.TabIndex = 17;
             this.taskTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.taskTable_CellContentClick);
             // 
-            // taskItemBindingSource
-            // 
-            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
-            // 
             // dealeatChosen
             // 
             this.dealeatChosen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dealeatChosen.Location = new System.Drawing.Point(844, 212);
+            this.dealeatChosen.Location = new System.Drawing.Point(788, 212);
             this.dealeatChosen.Name = "dealeatChosen";
             this.dealeatChosen.Size = new System.Drawing.Size(94, 36);
             this.dealeatChosen.TabIndex = 18;
@@ -153,11 +147,27 @@
             this.dealeatChosen.UseVisualStyleBackColor = true;
             this.dealeatChosen.Click += new System.EventHandler(this.dealeatChosen_Click);
             // 
+            // DeleteAll
+            // 
+            this.DeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteAll.Location = new System.Drawing.Point(917, 212);
+            this.DeleteAll.Name = "DeleteAll";
+            this.DeleteAll.Size = new System.Drawing.Size(91, 36);
+            this.DeleteAll.TabIndex = 19;
+            this.DeleteAll.Text = "Удалить все";
+            this.DeleteAll.UseVisualStyleBackColor = true;
+            this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
+            // 
+            // taskItemBindingSource
+            // 
+            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.DeleteAll);
             this.Controls.Add(this.dealeatChosen);
             this.Controls.Add(this.taskTable);
             this.Controls.Add(this.priorityBox);
@@ -191,6 +201,7 @@
         private System.Windows.Forms.ComboBox priorityBox;
         private System.Windows.Forms.DataGridView taskTable;
         private System.Windows.Forms.Button dealeatChosen;
+        private System.Windows.Forms.Button DeleteAll;
     }
 }
 

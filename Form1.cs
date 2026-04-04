@@ -14,7 +14,7 @@ namespace TaskManager
     public partial class Form1 : Form
     {
         BindingList<TaskItem> taskItems;
-        Utils utils = new Utils();
+        Utils utils = new Utils(0);
 
         public Form1()
         {
@@ -43,6 +43,8 @@ namespace TaskManager
                 try
                 {
                     taskItems.Add(utils.CreateTaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
+                    titleBox.Text = "";
+                    descripBox.Text = "";
                 }
                 catch (Exception ex)
                 { 
@@ -74,10 +76,23 @@ namespace TaskManager
 
         private void dealeatChosen_Click(object sender, EventArgs e)
         {
-            
-            taskItems.Remove();
 
+            for (int i  = taskItems.Count - 1; i >= 0 ; --i)
+            {
+                if (taskItems[i].IsComplete == true)
+                {
+                    utils.DeleteTaskItem(taskItems[i].Title);
+                    taskItems.RemoveAt(i);
+                }
+            }
         }
+
+        private void DeleteAll_Click(object sender, EventArgs e)
+        {
+            taskItems.Clear();
+            utils.DeleteAll();
+        }
+
     }
     
 }
