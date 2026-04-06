@@ -41,6 +41,12 @@
             this.taskTable = new System.Windows.Forms.DataGridView();
             this.dealeatChosen = new System.Windows.Forms.Button();
             this.DeleteAll = new System.Windows.Forms.Button();
+            this.SortBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.FilterTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.FilterBox = new System.Windows.Forms.ComboBox();
+            this.LabelFilter = new System.Windows.Forms.Label();
             this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
@@ -158,6 +164,58 @@
             this.DeleteAll.UseVisualStyleBackColor = true;
             this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
             // 
+            // SortBox
+            // 
+            this.SortBox.FormattingEnabled = true;
+            this.SortBox.Location = new System.Drawing.Point(219, 363);
+            this.SortBox.Name = "SortBox";
+            this.SortBox.Size = new System.Drawing.Size(121, 24);
+            this.SortBox.TabIndex = 20;
+            this.SortBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(216, 334);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Sort by";
+            // 
+            // FilterTextBox
+            // 
+            this.FilterTextBox.Location = new System.Drawing.Point(13, 442);
+            this.FilterTextBox.Name = "FilterTextBox";
+            this.FilterTextBox.Size = new System.Drawing.Size(149, 22);
+            this.FilterTextBox.TabIndex = 22;
+            this.FilterTextBox.TextChanged += new System.EventHandler(this.FilterTextBox_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 16);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Filter by";
+            // 
+            // FilterBox
+            // 
+            this.FilterBox.FormattingEnabled = true;
+            this.FilterBox.Location = new System.Drawing.Point(13, 363);
+            this.FilterBox.Name = "FilterBox";
+            this.FilterBox.Size = new System.Drawing.Size(121, 24);
+            this.FilterBox.TabIndex = 24;
+            // 
+            // LabelFilter
+            // 
+            this.LabelFilter.AutoSize = true;
+            this.LabelFilter.Location = new System.Drawing.Point(13, 406);
+            this.LabelFilter.Name = "LabelFilter";
+            this.LabelFilter.Size = new System.Drawing.Size(132, 16);
+            this.LabelFilter.TabIndex = 26;
+            this.LabelFilter.Text = "Не отфильтровано";
+            // 
             // taskItemBindingSource
             // 
             this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
@@ -167,6 +225,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.LabelFilter);
+            this.Controls.Add(this.FilterBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.FilterTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SortBox);
             this.Controls.Add(this.DeleteAll);
             this.Controls.Add(this.dealeatChosen);
             this.Controls.Add(this.taskTable);
@@ -202,6 +266,12 @@
         private System.Windows.Forms.DataGridView taskTable;
         private System.Windows.Forms.Button dealeatChosen;
         private System.Windows.Forms.Button DeleteAll;
+        private System.Windows.Forms.ComboBox SortBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox FilterTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox FilterBox;
+        private System.Windows.Forms.Label LabelFilter;
     }
 }
 

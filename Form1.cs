@@ -14,7 +14,7 @@ namespace TaskManager
     public partial class Form1 : Form
     {
         BindingList<TaskItem> taskItems;
-        Utils utils = new Utils(0);
+       Utils utils = new Utils(0);
 
         public Form1()
         {
@@ -23,7 +23,8 @@ namespace TaskManager
             taskItems  = new BindingList<TaskItem>();
             priorityBox.DataSource = Enum.GetValues(typeof(Priority));
             taskTable.DataSource = taskItems;
-
+            SortBox.DataSource = new List<string> {"Id", "Title", "Description", "Priority", "IsComplete", "DueTime" };
+            FilterBox.DataSource = new List<string> { "Id", "Title", "Description", "Priority", "DueTime" };
             taskTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
@@ -92,6 +93,28 @@ namespace TaskManager
             taskItems.Clear();
             utils.DeleteAll();
         }
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            taskItems = SortAndFilter.Sort(taskItems, SortBox.SelectedItem.ToString());
+            taskTable.DataSource = taskItems;
+        }
+
+        private void FilterTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+            taskTable.DataSource = SortAndFilter.Filter(taskItems, FilterBox.SelectedItem.ToString() , FilterTextBox.Text);
+            LabelFilter.Text = "Отфильтровано";
+            if (string.IsNullOrEmpty(FilterTextBox.Text))
+            {
+                LabelFilter.Text = "Не отфильтровано";
+                taskTable.DataSource = taskItems;
+            }
+
+
+        }
+
 
     }
     
