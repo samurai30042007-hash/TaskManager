@@ -14,7 +14,10 @@ namespace TaskManager
     public partial class Form1 : Form
     {
         BindingList<TaskItem> taskItems;
-       Utils utils = new Utils(0);
+        DateTime NowDate = DateTime.Now.Date;
+        Utils utils = new Utils(0);
+        int CompletTask = 0, UnCompleteTask = 0;
+        TimeSpan UntilDeadLine = TimeSpan.Zero, AfterDeadLine = TimeSpan.Zero; 
 
         public Form1()
         {
@@ -26,6 +29,8 @@ namespace TaskManager
             SortBox.DataSource = new List<string> {"Id", "Title", "Description", "Priority", "IsComplete", "DueTime" };
             FilterBox.DataSource = new List<string> { "Id", "Title", "Description", "Priority", "DueTime" };
             taskTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            taskTable.CellFormatting += taskTable_CellFormatting;
+            UpdateCompletedTaskLAbel();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +51,17 @@ namespace TaskManager
                     taskItems.Add(utils.CreateTaskItem(titleBox.Text, descripBox.Text, (Priority)priorityBox.SelectedItem, dueTimeBox.Value.Date));
                     titleBox.Text = "";
                     descripBox.Text = "";
+                    ++UnCompleteTask;
+                    if (dueTimeBox.Value.Date <= NowDate)
+                    {
+                        AfterDeadLine += NowDate - dueTimeBox.Value.Date;
+                    }
+                    else
+                    {
+                        UntilDeadLine += dueTimeBox.Value.Date - NowDate;
+
+                    }
+                    UpdateCompletedTaskLAbel();
                 }
                 catch (Exception ex)
                 { 
@@ -55,15 +71,23 @@ namespace TaskManager
             }
         }
 
-
-        private void label2_Click(object sender, EventArgs e)
+        private void taskTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-        }
+            TaskItem task = taskTable.Rows[e.RowIndex].DataBoundItem as TaskItem;
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
+            if (task != null) { 
+            
+                if (task.DueTime < NowDate && !task.IsComplete)
+                {
+                    taskTable.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else
+                {
+                    
+                    taskTable.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
         }
 
         private void taskTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,6 +95,35 @@ namespace TaskManager
             
             if (taskTable.Columns[e.ColumnIndex].HeaderText == "IsComplete")
             {
+                if (taskItems[e.RowIndex].IsComplete)
+                { // Статистику не делал через linq  так как слишком жирно каждый раз пробегать по всем эллементам и смотреть кто выполнен а кто нет, моя реализация не требует много вычислений                
+                    ++UnCompleteTask;
+                    --CompletTask;
+                    if (taskItems[e.RowIndex].DueTime <= NowDate)
+                    {
+                        AfterDeadLine -= taskItems[e.RowIndex].DueTime - NowDate;
+                    }
+                    else
+                    {
+                        UntilDeadLine -= NowDate - taskItems[e.RowIndex].DueTime;
+
+                    }
+                }
+                else
+                {
+                    --UnCompleteTask;
+                    ++CompletTask;
+                    if (taskItems[e.RowIndex].DueTime <= NowDate)
+                    {
+                        AfterDeadLine += taskItems[e.RowIndex].DueTime - NowDate;
+                    }
+                    else
+                    {
+                        UntilDeadLine += NowDate - taskItems[e.RowIndex].DueTime;
+
+                    }
+                }
+                UpdateCompletedTaskLAbel();
                 taskItems[e.RowIndex].IsComplete = !taskItems[e.RowIndex].IsComplete;
             }
         }
@@ -84,7 +137,9 @@ namespace TaskManager
                 {
                     utils.DeleteTaskItem(taskItems[i].Title);
                     taskItems.RemoveAt(i);
+                    --CompletTask;
                 }
+                UpdateCompletedTaskLAbel();
             }
         }
 
@@ -92,6 +147,11 @@ namespace TaskManager
         {
             taskItems.Clear();
             utils.DeleteAll();
+            UntilDeadLine = TimeSpan.Zero;
+            AfterDeadLine = TimeSpan.Zero;
+            CompletTask = 0;
+            UnCompleteTask = 0;
+            UpdateCompletedTaskLAbel();
         }
 
 
@@ -101,6 +161,15 @@ namespace TaskManager
             taskTable.DataSource = taskItems;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        internal void UpdateCompletedTaskLAbel()
+        {
+            CompletedTaskLAbel.Text = $"Выполненые задания - {CompletTask}\nНе выполненые задания - {UnCompleteTask}\nСреднее время до делайна - {UntilDeadLine}\nСреднее время просрочки - {AfterDeadLine}";
+        }
         private void FilterTextBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -115,7 +184,13 @@ namespace TaskManager
 
         }
 
+        private void Highlight_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 1; i++)
+            {
 
+            }
+        }
     }
     
 }

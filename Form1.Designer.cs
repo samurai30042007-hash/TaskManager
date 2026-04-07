@@ -47,6 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.FilterBox = new System.Windows.Forms.ComboBox();
             this.LabelFilter = new System.Windows.Forms.Label();
+            this.CompletedTaskLAbel = new System.Windows.Forms.Label();
             this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
@@ -76,7 +77,6 @@
             this.label2.Size = new System.Drawing.Size(104, 18);
             this.label2.TabIndex = 9;
             this.label2.Text = "*Title input box";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -104,7 +104,6 @@
             this.label5.Size = new System.Drawing.Size(127, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "*Due Time input box";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // dueTimeBox
             // 
@@ -216,6 +215,15 @@
             this.LabelFilter.TabIndex = 26;
             this.LabelFilter.Text = "Не отфильтровано";
             // 
+            // CompletedTaskLAbel
+            // 
+            this.CompletedTaskLAbel.AutoSize = true;
+            this.CompletedTaskLAbel.Location = new System.Drawing.Point(216, 406);
+            this.CompletedTaskLAbel.Name = "CompletedTaskLAbel";
+            this.CompletedTaskLAbel.Size = new System.Drawing.Size(40, 16);
+            this.CompletedTaskLAbel.TabIndex = 28;
+            this.CompletedTaskLAbel.Text = "None";
+            // 
             // taskItemBindingSource
             // 
             this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
@@ -225,6 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.CompletedTaskLAbel);
             this.Controls.Add(this.LabelFilter);
             this.Controls.Add(this.FilterBox);
             this.Controls.Add(this.label6);
@@ -245,6 +254,7 @@
             this.Controls.Add(this.titleBox);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -272,6 +282,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox FilterBox;
         private System.Windows.Forms.Label LabelFilter;
+        private System.Windows.Forms.Label CompletedTaskLAbel;
     }
 }
 
