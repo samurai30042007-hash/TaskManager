@@ -49,6 +49,9 @@
             this.LabelFilter = new System.Windows.Forms.Label();
             this.CompletedTaskLAbel = new System.Windows.Forms.Label();
             this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.ImportBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -228,11 +231,37 @@
             // 
             this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // SaveBtn
+            // 
+            this.SaveBtn.Location = new System.Drawing.Point(854, 334);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(101, 33);
+            this.SaveBtn.TabIndex = 29;
+            this.SaveBtn.Text = "Save";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // ImportBtn
+            // 
+            this.ImportBtn.Location = new System.Drawing.Point(988, 334);
+            this.ImportBtn.Name = "ImportBtn";
+            this.ImportBtn.Size = new System.Drawing.Size(101, 33);
+            this.ImportBtn.TabIndex = 30;
+            this.ImportBtn.Text = "Import";
+            this.ImportBtn.UseVisualStyleBackColor = true;
+            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.ImportBtn);
+            this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.CompletedTaskLAbel);
             this.Controls.Add(this.LabelFilter);
             this.Controls.Add(this.FilterBox);
@@ -254,7 +283,6 @@
             this.Controls.Add(this.titleBox);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -283,6 +311,9 @@
         private System.Windows.Forms.ComboBox FilterBox;
         private System.Windows.Forms.Label LabelFilter;
         private System.Windows.Forms.Label CompletedTaskLAbel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button ImportBtn;
     }
 }
 

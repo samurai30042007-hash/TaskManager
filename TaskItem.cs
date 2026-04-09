@@ -64,7 +64,6 @@ namespace TaskManager
             }
         }
         
-
         internal TaskItem(int id, string title, string description, Priority priority, DateTime dueTime, bool isComplite = false)
         {
             this.Id = id;
@@ -77,10 +76,19 @@ namespace TaskManager
         
     }
 
-    
+    public struct TaskItemStruct
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public Priority Priority { get; set; }
+        public DateTime DueTime { get; set; }
+        public bool IsComplete { get; set; }
+    }
 
 
-    internal enum Priority
+
+    public enum Priority
     {
         Low,
         Medium,
