@@ -48,10 +48,12 @@
             this.FilterBox = new System.Windows.Forms.ComboBox();
             this.LabelFilter = new System.Windows.Forms.Label();
             this.CompletedTaskLAbel = new System.Windows.Forms.Label();
-            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.ImportBtn = new System.Windows.Forms.Button();
+            this.LabelFullStatistic = new System.Windows.Forms.Label();
+            this.FullStaticBtn = new System.Windows.Forms.Button();
+            this.taskItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.taskTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -227,10 +229,6 @@
             this.CompletedTaskLAbel.TabIndex = 28;
             this.CompletedTaskLAbel.Text = "None";
             // 
-            // taskItemBindingSource
-            // 
-            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -255,11 +253,36 @@
             this.ImportBtn.UseVisualStyleBackColor = true;
             this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
             // 
+            // LabelFullStatistic
+            // 
+            this.LabelFullStatistic.AutoSize = true;
+            this.LabelFullStatistic.Location = new System.Drawing.Point(578, 333);
+            this.LabelFullStatistic.Name = "LabelFullStatistic";
+            this.LabelFullStatistic.Size = new System.Drawing.Size(40, 16);
+            this.LabelFullStatistic.TabIndex = 31;
+            this.LabelFullStatistic.Text = "None";
+            // 
+            // FullStaticBtn
+            // 
+            this.FullStaticBtn.Location = new System.Drawing.Point(680, 326);
+            this.FullStaticBtn.Name = "FullStaticBtn";
+            this.FullStaticBtn.Size = new System.Drawing.Size(75, 23);
+            this.FullStaticBtn.TabIndex = 32;
+            this.FullStaticBtn.Text = "Click";
+            this.FullStaticBtn.UseVisualStyleBackColor = true;
+            this.FullStaticBtn.Click += new System.EventHandler(this.FullStaticBtn_Click);
+            // 
+            // taskItemBindingSource
+            // 
+            this.taskItemBindingSource.DataSource = typeof(TaskManager.TaskItem);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 617);
+            this.Controls.Add(this.FullStaticBtn);
+            this.Controls.Add(this.LabelFullStatistic);
             this.Controls.Add(this.ImportBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.CompletedTaskLAbel);
@@ -314,6 +337,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button ImportBtn;
+        private System.Windows.Forms.Label LabelFullStatistic;
+        private System.Windows.Forms.Button FullStaticBtn;
     }
 }
 

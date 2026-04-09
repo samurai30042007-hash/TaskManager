@@ -151,6 +151,11 @@ namespace TaskManager
 
 
         }
+
+        private void FullStaticBtn_Click(object sender, EventArgs e)
+        {
+            SortAndFilter.FullStatistic(LabelFullStatistic, utils, taskItems);
+        }
     }
     
 }
